@@ -14,9 +14,13 @@ A company is setting up a new lab environment for testing apps/services before t
 
 - Azure subscription
 - Microsoft Entra ID (Azure AD)
-- Region: East US
 
-## Architecture
+## Diagram
+
+<img width="1260" height="1240" alt="image" src="https://github.com/user-attachments/assets/33f9f760-bf7c-4292-b42d-6430f36b1245" />
+
+
+
 
 
 
