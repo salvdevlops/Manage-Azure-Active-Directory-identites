@@ -17,14 +17,15 @@ A company is setting up a new lab environment for testing apps/services before t
 
 ## Diagram
 
-<img width="1260" height="1240" alt="image" src="https://github.com/user-attachments/assets/33f9f760-bf7c-4292-b42d-6430f36b1245" />
+<img width="530" height="378" alt="image" src="https://github.com/user-attachments/assets/d6447533-a316-4b35-b146-8a1e3a8fc1d6" />
 
 
 
 
 
 
-## Skills Preformed
+
+## Skills Demonstrated
 
 - Creating and configuring Microsoft Entra ID user accounts
 - Inviting and configuring external (guest) users
