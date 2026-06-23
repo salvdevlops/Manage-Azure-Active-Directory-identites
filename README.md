@@ -1,14 +1,14 @@
 # Microsoft Entra ID: Users and Groups
 
-This lab covers the fundamentals of identity management in Microsoft Entra ID (formerly Azure AD): creating user accounts, inviting external (guest) users, and organizing both into groups for access control.
+This lab is about the basics of identity management in Microsoft Entra ID (formerly Azure AD) — creating user accounts, inviting an external/guest user, and putting both into a group.
 
 ## Overview
 
-Users and groups are the basic building blocks of any identity solution. In this lab, I provisioned internal and guest user accounts in Microsoft Entra ID and organized them into a security group, simulating how an organization would onboard engineers into a new pre-production lab environment.
+Users and groups are the building blocks of any identity setup. In this lab I created a regular Entra ID user, invited a guest user, and added both to a security group — basically simulating how a company would onboard a couple new engineers into a lab environment.
 
 ## Lab Scenario
 
-An organization is standing up a new lab environment for pre-production testing of apps and services. A small number of engineers are being hired to manage that environment, including its virtual machines. To let those engineers authenticate through Microsoft Entra ID, I was tasked with provisioning users and groups — with the goal of keeping group membership easy to manage as the team grows.
+A company is setting up a new lab environment for testing apps/services before they go to production. A couple engineers are getting hired to manage it (including the VMs), and they need to authenticate through Microsoft Entra ID. My job: set up the users and groups so it's easy to manage as more people get added later.
 
 ## Environment
 
@@ -18,9 +18,9 @@ An organization is standing up a new lab environment for pre-production testing 
 
 ## Architecture
 
-![Lab architecture diagram](https://github.com/user-attachments/assets/7e8a9549-f56a-4e67-ae04-02daa931e724)
 
-## Skills Practiced
+
+## Skills Preformed
 
 - Creating and configuring Microsoft Entra ID user accounts
 - Inviting and configuring external (guest) users
@@ -31,7 +31,7 @@ An organization is standing up a new lab environment for pre-production testing 
 
 ## Task 1: Create and Configure User Accounts
 
-User accounts store identity data such as name, department, location, and contact information. In this task, I created a native Entra ID user and invited an external guest user, then configured both with matching job/department metadata.
+User accounts hold info like name, department, location, and contact details. Here I created a regular Entra ID user and invited a guest user, then set them both up with the same job/department info.
 
 ### Step 1: Open Microsoft Entra ID
 
@@ -102,8 +102,6 @@ Move to the **Properties** tab and fill in the same fields used for the internal
 | Department | IT |
 | Usage location | United States |
 
-`[ADD SCREENSHOT HERE — guest invite Properties tab]`
-
 ### Step 10: Send the invite
 
 Select **Review + invite**, then **Invite**.
@@ -112,18 +110,19 @@ Select **Review + invite**, then **Invite**.
 
 Refresh the page and confirm the invited (guest) user now appears in the list. You should also receive the invitation email shortly.
 
-`[ADD SCREENSHOT HERE — guest user listed]`
+<img width="617" height="715" alt="image" src="https://github.com/user-attachments/assets/43ea5d79-bb2d-4ca8-be7d-4c4192d6e0b2" />
 
-> **Reflection:** Creating accounts one at a time doesn't scale. Most organizations provision users in bulk — through CSV import, PowerShell/Graph API scripts, or automated HR-driven provisioning (e.g. via Entra ID Connect or an HR system integration).
+
+> **Note:** Creating accounts one-by-one like this obviously doesn't scale. In a real org you'd bulk-create users — CSV import, PowerShell/Graph API scripts, or syncing from an HR system through Entra Connect.
 
 ---
 
 ## Task 2: Create Groups and Add Members
 
-Groups can contain users or devices, and membership can be assigned in two ways:
+Groups can hold users or devices, and there's two ways to manage membership:
 
-- **Static** — an admin manually adds and removes members
-- **Dynamic** — membership updates automatically based on a rule, such as job title (requires Entra ID Premium P1 or P2)
+- **Static** — you manually add/remove members
+- **Dynamic** — membership updates on its own based on a rule, like job title (needs Entra ID Premium P1 or P2)
 
 ### Step 1: Open Groups
 
@@ -131,10 +130,10 @@ In the Azure portal, search for and select **Microsoft Entra ID**, then in the *
 
 ### Step 2: Review group settings
 
-Take a moment to look through the group settings in the left pane:
+Take a quick look at the group settings in the left pane:
 
-- **Expiration** — sets a group lifetime in days; after that period, the owner must renew it
-- **Naming policy** — lets you block certain words and enforce a prefix/suffix on group names
+- **Expiration** — sets how long a group lasts before the owner has to renew it
+- **Naming policy** — blocks certain words and can force a prefix/suffix on group names
 
 `[ADD SCREENSHOT HERE — group settings pane]`
 
@@ -151,7 +150,8 @@ From **All groups**, select **+ New group**.
 
 > Dynamic membership requires an Entra ID Premium P1 or P2 license. If your tenant has one, additional membership type options will appear in the dropdown.
 
-![Create assigned group](https://github.com/user-attachments/assets/e013f04f-4c06-45ee-80c3-56f5987e42ee)
+<img width="799" height="514" alt="image" src="https://github.com/user-attachments/assets/37cd8b67-1805-4d62-8daf-3b25a08e88ee" />
+
 
 ### Step 4: Add an owner
 
@@ -159,13 +159,15 @@ Select **No owners selected**, then search for and select yourself as the owner.
 
 > A group can have more than one owner.
 
-`[ADD SCREENSHOT HERE — add owners pane]`
+<img width="739" height="504" alt="image" src="https://github.com/user-attachments/assets/6675c6b9-7350-4592-a98c-966491afd65f" />
+
 
 ### Step 5: Add members
 
 Select **No members selected**. In the **Add members** pane, search for and select the user account and guest user created in Task 1, then add both to the group.
 
-`[ADD SCREENSHOT HERE — add members pane]`
+<img width="1045" height="403" alt="image" src="https://github.com/user-attachments/assets/539da38d-14fc-4ebc-9bdf-47dbc2be4de2" />
+
 
 ### Step 6: Create the group
 
@@ -175,30 +177,26 @@ Select **Create** to deploy the group.
 
 Refresh the page and confirm the new group appears in the group list.
 
-`[ADD SCREENSHOT HERE — group list showing new group]`
+<img width="414" height="270" alt="image" src="https://github.com/user-attachments/assets/2cc73f92-bf02-4dae-90a2-0a91c9a23146" />
+
 
 ### Step 8: Review group membership
 
 Open the new group and review its **Members** and **Owners** tabs to confirm everything was added correctly.
 
-`[ADD SCREENSHOT HERE — members/owners tab]`
+<img width="418" height="301" alt="image" src="https://github.com/user-attachments/assets/6a38dbdf-5e5e-48f7-a7e5-c24fbbe88be9" />      <img width="421" height="305" alt="image" src="https://github.com/user-attachments/assets/aebbb80e-e15c-49ae-b43c-eba8938d7cce" />
 
-> **Reflection:** At scale, managing groups individually becomes unsustainable. A real plan would define naming conventions, ownership rules, and a process (manual or automated) for adding/removing members as staff join or change roles.
+
+> **Note:** Doing this manually is fine for one group, but it doesn't hold up at scale. A real setup would need clear naming conventions, defined ownership, and either a process or automation for adding/removing members as people join or change roles.
 
 ---
 
 ## Key Takeaways
 
-- A **tenant** represents an organization's dedicated instance of Microsoft cloud services, covering both internal and external (guest) users.
-- Microsoft Entra ID supports both **user** and **guest** accounts, each scoped to the access appropriate for their role.
+- A **tenant** is basically an org's own dedicated instance of Microsoft cloud services — covers both internal and guest users.
+- Entra ID has **user** and **guest** accounts, each with access scoped to what they actually need.
 - **Groups** combine related users or devices, and come in two types: **Security** and **Microsoft 365**.
-- Group membership can be assigned **statically** (manual) or **dynamically** (rule-based, requires Premium licensing).
-
-
-
-
-
-
+- Group membership can be **static** (manual) or **dynamic** (rule-based, needs Premium licensing).
 
 
 
